@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Purchase</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Course Price</th>
+                <th>Buy Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="course:${courseList}">
+                <td th:text="${course.courseId}"></td>
+                <td th:text="${course.courseName}"></td>
+                <td th:text="${course.coursePrice}"></td>
+                <td>
+                    <form id="payment-form">
+                        <input type="hidden" class="email" th:value="${session.loggedInUser.email}"/>
+                        <input type="hidden" class="course-id" th:value="${course.courseId}"/>
+                        <button type="submit" id="pay-button" class="btn btn-success buy-button" th:data-amount="${course.coursePrice}">BUY</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/studentHome" class="btn btn-primary">Go to Home</a>
+</div>
+
+<script>
+$(document).ready(function() {
+    $(".buy-button").click(function(e) {
+        e.preventDefault();
+        var form = $(this).closest('form');
+        var amount = $(this).data("amount");
+        var email = form.find('.email').val();
+        var courseId = form.find('.course-id').val();
+        createOrder(amount, email, courseId);
+    });
+});
+
+function createOrder(amount, email, courseId) {
+	alert(amount+email+courseId)
+    $.post("/takeOrder", { amount: amount, email: email, courseId: courseId })
+        .done(function(order) {
+            order = JSON.parse(order);
+            var options = {
+                "key": "rzp_test_nhVwy7GsLlTbXk",
+                "amount": order.amount_due.toString(),
+                "currency": "INR",
+                "name": "Learn Sphere",
+                "description": "Test Transaction",
+                "order_id": order.id,
+                "handler": function (response) {
+                    verifyPayment(response.razorpay_order_id, response.razorpay_payment_id, response.razorpay_signature);
+                },
+                "prefill": {
+                    "name": "Your Name",
+                    "email": "test@example.com",
+                    "contact": "9999999999"
+                },
+                "notes": {
+                    "address": "Your Address"
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        })
+        .fail(function(error) {
+            console.error("Error:", error);
+        });
+}
+
+function verifyPayment(orderId, paymentId, signature) {
+     $.post("/verify", { orderId: orderId, paymentId: paymentId, signature: signature })
+         .done(function(isValid) {
+             if (isValid) {
+                 console.log("Payment successful");
+             } else {
+                 console.log("Payment failed");
+             }
+         })
+         .fail(function(error) {
+             console.error("Error:", error);
+         });
+}
+</script>
+</body>
+</html>

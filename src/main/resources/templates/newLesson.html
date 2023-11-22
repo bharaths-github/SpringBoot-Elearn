@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Lesson</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px 20px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>New Lesson</h1>
+        <form action="/addLesson" method="post">
+            <label for="course">Course ID:</label>
+            <input type="text" id="course" name="course" required>
+            
+            <label for="lessonId">Lesson ID:</label>
+            <input type="text" id="lessonId" name="lessonId" required>
+            
+            <label for="lessonName">Lesson Name:</label>
+            <input type="text" id="lessonName" name="lessonName" required>
+            
+            <label for="lessonTopics">Lesson Topics:</label>
+            <input type="text" id="lessonTopics" name="lessonTopics" required>
+            
+            <label for="lessonLink">Lesson Link:</label>
+            <input type="text" id="lessonLink" name="lessonLink" required>
+            
+            <input type="submit" value="ADD LESSON">
+        </form>
+    </div>
+</body>
+
+</html>

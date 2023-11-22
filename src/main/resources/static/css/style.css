@@ -1,0 +1,142 @@
+/* styles.css */
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  /* Header styles */
+  header {
+    background-color:darkblue ;
+    color: #fff;
+    padding: 0rem 0;
+  }
+  .nav{
+	  opacity: 0.1; /* Adjust the opacity to your preference */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-links li {
+    margin-right: 30px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-links a:hover {
+    color: #F9CA24;
+  }
+  
+  /* Hero section styles */
+  .hero {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 10rem 0 10rem;
+    height: 40rem;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .hero-content{
+	  padding-top: 2.5rem;
+  }
+  
+  button {
+	display: inline-block;
+    background-color: #F9CA24;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: #F9CA24;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #FF5733;
+  }
+  
+  /* Course section styles */
+  .courses {
+    padding: 5rem 0 0;
+    text-align: center;
+   }
+  
+  .course-card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .course-img img {
+    width: 100%;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-size: cover;
+  }
+  
+  .course-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .course-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* About section styles */
+  .about {
+    background-color: #FF5733;
+    padding: 2rem 0 0;
+  }
+  
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .about h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: rgba(51, 51, 51, 0.9);
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
