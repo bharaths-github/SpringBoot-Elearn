@@ -22,17 +22,21 @@ To run LearnSphere locally, follow these steps:
    git clone https://github.com/yourusername/learnsphere.git
 
 2. Navigate to the project directory: mvn clean package
-    cd learnsphere
+
+   cd learnsphere
 
 3. Build the project using Maven:
-    mvn clean package
+
+   mvn clean package
 
 4. Run the Spring Boot application:
-    java -jar target/learnsphere-0.0.1-SNAPSHOT.jar
+
+   java -jar target/learnsphere-0.0.1-SNAPSHOT.jar
 
 5. Open a web browser and go to http://localhost:8080 to access the application.
 
 Usage
+
 1.Register an Account: Users can register a new account by providing their details such as email, password, and role.
 
 2.Log In: Existing users can log in to their accounts using their email and password.
